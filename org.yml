@@ -1,0 +1,22 @@
+curl -X POST \
+  https://api.github.com/orgs/<ORGANIZATION_NAME>/hooks \
+  -H 'authorization: token <YOUR_API_TOKEN>' \
+  -H 'cache-control: no-cache' \
+  -d '{ 
+  "config": { 
+    "url": "https://logs-github-receiver.sematext.com/github/<LOGS_TOKEN>" 
+    # for EU "url": "https://logs-github-receiver.eu.sematext.com/github/<LOGS_TOKEN>" 
+  }, 
+  "events": [ 
+    "issues", 
+    "issue_comment", 
+    "pull_request", 
+    "pull_request_review", 
+    "pull_request_review_comment", 
+    "commit_comment", 
+    "push", 
+    "release", 
+    "create", 
+    "delete" 
+  ] 
+}'
